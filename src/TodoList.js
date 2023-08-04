@@ -1,9 +1,12 @@
 function TodoList({children}) {
     return (
-        <ul>
-            {children}
-        </ul>
+        <div className="todo_list_container">
+            <ul>
+                {children}
+            </ul>
+        </div>
+        
     );
 }
 
-export { TodoList};
+export { TodoList };

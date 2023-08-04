@@ -7,10 +7,15 @@ import { CreateTodoButtom } from './CreateTodoButtom';
 import React from 'react';
 
 const defaultTodos = [
-  { text: 'cortar cebolla', completed: false },
-  { text: 'tomar el curso de React.js', completed: false },
+  { text: 'Cortar cebolla', completed: false },
+  { text: 'Tomar el curso de React.js', completed: false },
   { text: 'Llorar con la llorona', completed: true },
-  { text: 'aaaaaaaa', completed: false }
+  { text: 'Aaa', completed: true },
+  { text: 'Aaaaaaaa', completed: false },
+  { text: 'Aaaaaa', completed: false },
+  { text: 'Aaaaaaa', completed: false },
+  { text: 'Aaaa', completed: false },
+  { text: 'Aaaaa', completed: false }
 ]
 
 function App() {
