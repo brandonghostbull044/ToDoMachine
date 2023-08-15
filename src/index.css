@@ -230,6 +230,10 @@ code {
   cursor: pointer;
 }
 
+#root .deleteTodo {
+  display: none;
+}
+
 #root .Search_input {
   margin: auto;
   width: 35vw;
