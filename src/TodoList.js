@@ -1,9 +1,11 @@
-function TodoList({children}) {
+import React from "react";
+
+function TodoList({children, filterT, filterSC, filterC}) {
     return (
         <div className="todo_list_container">
-            <p onClick={{children}.filter} value={1}>Todos</p>
-            <p onClick={{children}.filter} value={2}>Sin completar</p>
-            <p onClick={{children}.filter} value={3}>Completados</p>
+            <p onClick={filterT}>Todos</p>
+            <p onClick={filterSC}>Sin completar</p>
+            <p onClick={filterC}>Completados</p>
             <ul>
                 {children}
             </ul>
