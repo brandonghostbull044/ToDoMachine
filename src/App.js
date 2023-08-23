@@ -17,9 +17,10 @@ function App() {
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
+  const [sliderTodos, setSliderTodos] = React.useState(todos);
   const completedTodosLength = todos.filter( todo => !!todo.completed ).length;
   const totalTodos = todos.length;
-  const searchedTodos = todos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+  const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
@@ -48,21 +49,38 @@ function App() {
     );
     newTodos.splice(todoIndex, 1);
     setTodos(newTodos);
+    switch (slider) {
+      case 2:
+        const new2Todos = newTodos.filter(todo => !todo.completed);
+        setSliderTodos(new2Todos);
+        console.log(new2Todos);
+        console.log('funciona el filtredsc');
+        break;
+      case 3:
+        const new3Todos = newTodos.filter(todo => todo.completed);
+        setSliderTodos(new3Todos);
+        console.log(new3Todos);
+        console.log('funciona el filtredsc');
+        break;
+      default:
+        setSliderTodos(newTodos);
+        break;
+    }
   };
   const filtredT = (text) => {
-    const newTodos = [...defaultTodos];
+    const newTodos = [...todos];
     setSlider(1);
-    setTodos(newTodos);
+    setSliderTodos(newTodos);
   };
   const filtredSC = () => {
-    const newTodos = defaultTodos.filter(todo => !todo.completed);
+    const newTodos = todos.filter(todo => !todo.completed);
     setSlider(2);
-    setTodos(newTodos);
+    setSliderTodos(newTodos);
   };
   const filtredC = () => {
-    const newTodos = defaultTodos.filter(todo => todo.completed);
+    const newTodos = todos.filter(todo => todo.completed);
     setSlider(3);
-    setTodos(newTodos);
+    setSliderTodos(newTodos);
   };
   
 
