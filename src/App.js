@@ -6,7 +6,7 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButtom } from './CreateTodoButtom';
 import React from 'react';
 
-const defaultTodos = [
+var defaultTodos = [
   { text: 'Cortar cebolla', completed: false },
   { text: 'Tomar el curso de React.js', completed: false },
   { text: 'Llorar con la llorona', completed: true },
@@ -14,10 +14,13 @@ const defaultTodos = [
 ];
 
 function App() {
+  
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
   const [sliderTodos, setSliderTodos] = React.useState(todos);
+  const [createValue, setCreateValue] = React.useState('');
+  const [addClickState, setAddClickState] = React.useState(1);
   const completedTodosLength = todos.filter( todo => !!todo.completed ).length;
   const totalTodos = todos.length;
   const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
@@ -82,12 +85,39 @@ function App() {
     setSlider(3);
     setSliderTodos(newTodos);
   };
+  const addClick = () => {
+    const inputAdder = document.querySelector('#inputAdder');
+    if (addClickState == 1) {
+      inputAdder.classList.remove('inactive');
+      setAddClickState(2);
+    } else {
+      if (createValue != '') {
+        defaultTodos.push({text: createValue, completed: false});
+        console.log('sirve');
+        setTodos(defaultTodos);
+        switch (slider) {
+          case 1: 
+            filtredT();
+            break;
+          case 2:
+            filtredSC();
+            break;
+          case 3:
+            filtredC();
+            break;
+        } 
+      } else {
+        return;
+      }
+    }
+    
+  }
   
 
   return (
     <>
       <TodoCounter completed={completedTodosLength} total={totalTodos} />
-      <CreateTodoButtom />
+      <CreateTodoButtom searchValue={createValue} setCreateValue={setCreateValue} addClick={addClick}/>
 
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList filterT={filtredT} filterC={filtredC} filterSC={filtredSC}>

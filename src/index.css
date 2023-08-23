@@ -8,12 +8,6 @@
   display: none;
 }
 
-.add_Active {
-  
-}
-
-
-
 body {
   height: 100vh;
   margin: 0;
@@ -82,8 +76,8 @@ code {
   display: flex;
   flex-direction: column;
   grid-area: left;
-  width: 80%;
-  height: 60%;
+  width: auto;
+  height: auto;
   margin-top: 85px;
   align-self: start;
   justify-self: center;
@@ -97,6 +91,7 @@ code {
   height: 40px;
   margin: 25px auto;
   padding: 5px;
+  margin: 25px;
   border: black 3px solid;
   border-radius: 50px;
   box-shadow: black 1px 2px 1px 2px;
@@ -118,7 +113,8 @@ code {
   font-weight: bold;
   width: 150px;
   height: 150px;
-  margin: auto;
+  margin: 20px;
+  align-self: center;
   border-radius: 100px;
   box-shadow: black 1px 2px 1px 2px;
 }
