@@ -14,7 +14,9 @@ var defaultTodos = [
 ];
 
 function App() {
-  
+  const slider_1 = document.querySelector('#slider_1');
+  const slider_2 = document.querySelector('#slider_2');
+  const slider_3 = document.querySelector('#slider_3');
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
@@ -45,6 +47,7 @@ function App() {
         setTodos(newTodos); 
     }
   };
+
   const deleteTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
@@ -70,21 +73,34 @@ function App() {
         break;
     }
   };
+
   const filtredT = (text) => {
+    slider_2.classList.remove('focus_slider');
+    slider_3.classList.remove('focus_slider');
+    slider_1.classList.add('focus_slider');
     const newTodos = [...todos];
     setSlider(1);
     setSliderTodos(newTodos);
   };
+
   const filtredSC = () => {
+    slider_3.classList.remove('focus_slider');
+    slider_1.classList.remove('focus_slider');
+    slider_2.classList.add('focus_slider');
     const newTodos = todos.filter(todo => !todo.completed);
     setSlider(2);
     setSliderTodos(newTodos);
   };
+
   const filtredC = () => {
+    slider_2.classList.remove('focus_slider');
+    slider_1.classList.remove('focus_slider');
+    slider_3.classList.add('focus_slider');
     const newTodos = todos.filter(todo => todo.completed);
     setSlider(3);
     setSliderTodos(newTodos);
   };
+
   const addClick = () => {
     const inputAdder = document.querySelector('#inputAdder');
     if (addClickState == 1) {

@@ -151,9 +151,13 @@ code {
   border: 2px black solid;
 }
 
+.focus_slider {
+  transform: translateY(-5px);
+}
+
 .todo_list_container > p:hover {
   cursor: pointer;
-  transform: translateY(-5px);
+  
 }
 
 .todo_list_container > p:first-child {
