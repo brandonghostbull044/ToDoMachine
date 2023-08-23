@@ -177,6 +177,7 @@ code {
   flex-flow: wrap;
   list-style: none;
   justify-content: stretch;
+  min-height: 50px;
 }
 
 #root ul li {

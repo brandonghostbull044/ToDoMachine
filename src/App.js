@@ -7,16 +7,14 @@ import { CreateTodoButtom } from './CreateTodoButtom';
 import React from 'react';
 
 var defaultTodos = [
-  { text: 'Cortar cebolla', completed: false },
-  { text: 'Tomar el curso de React.js', completed: false },
-  { text: 'Llorar con la llorona', completed: true },
-  { text: 'Aaa', completed: true },
+  
 ];
 
 function App() {
   const slider_1 = document.querySelector('#slider_1');
   const slider_2 = document.querySelector('#slider_2');
   const slider_3 = document.querySelector('#slider_3');
+  const create_button = document.querySelector('#create_button');
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
@@ -108,9 +106,13 @@ function App() {
       setAddClickState(2);
     } else {
       if (createValue != '') {
-        defaultTodos.push({text: createValue, completed: false});
-        console.log('sirve');
-        setTodos(defaultTodos);
+        if (!defaultTodos.some(e => e.text.toLocaleLowerCase() == createValue.toLocaleLowerCase())) {
+          defaultTodos.push({text: createValue, completed: false});
+          setTodos(defaultTodos);
+        } else {
+          alert('El ToDo ya está en tu lista');
+        }
+        
         switch (slider) {
           case 1: 
             filtredT();
