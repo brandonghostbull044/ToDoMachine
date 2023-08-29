@@ -4,6 +4,7 @@ import { TodoList } from './TodoList';
 import './App.css';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButtom } from './CreateTodoButtom';
+import { SwitchMode } from './switchMode';
 import React from 'react';
 
 var defaultTodos = [
@@ -14,7 +15,6 @@ function App() {
   const slider_1 = document.querySelector('#slider_1');
   const slider_2 = document.querySelector('#slider_2');
   const slider_3 = document.querySelector('#slider_3');
-  const create_button = document.querySelector('#create_button');
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
@@ -101,14 +101,15 @@ function App() {
 
   const addClick = () => {
     const inputAdder = document.querySelector('#inputAdder');
+    
     if (addClickState == 1) {
       inputAdder.classList.remove('inactive');
       setAddClickState(2);
     } else {
       if (createValue != '') {
-        if (!defaultTodos.some(e => e.text.toLocaleLowerCase() == createValue.toLocaleLowerCase())) {
-          defaultTodos.push({text: createValue, completed: false});
-          setTodos(defaultTodos);
+        if (!todos.some(e => e.text.toLocaleLowerCase() == createValue.toLocaleLowerCase())) {
+          todos.push({text: createValue, completed: false});
+          setTodos(todos);
         } else {
           alert('El ToDo ya está en tu lista');
         }
@@ -129,20 +130,40 @@ function App() {
       }
     }
     
+    
+  }
+
+  const darkMode = () => {
+    console.log('hOLA');
+    const bodyItem = document.querySelector('#root');
+    const switch_Mode = document.querySelector('.switch_Mode');
+    const create_button = document.querySelector('#create_button');
+    const todo_list_container = document.querySelector('.todo_list_container');
+    const slider_1 = document.querySelector('#slider_1');
+    const slider_2 = document.querySelector('#slider_2');
+    const slider_3 = document.querySelector('#slider_3');
+    bodyItem.classList.toggle('darkBackground');
+    create_button.classList.toggle('darkBackground');
+    switch_Mode.classList.toggle('darkButtom');
+    slider_1.classList.toggle('darkBackground');
+    slider_2.classList.toggle('darkBackground');
+    slider_3.classList.toggle('darkBackground');
+    todo_list_container.classList.toggle('darkShadow');
   }
   
-
   return (
     <>
       <TodoCounter completed={completedTodosLength} total={totalTodos} />
-      <CreateTodoButtom searchValue={createValue} setCreateValue={setCreateValue} addClick={addClick}/>
-
+      <CreateTodoButtom searchValue={createValue} setCreateValue={setCreateValue} addClick={addClick} counter={addClickState}/>
+      
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList filterT={filtredT} filterC={filtredC} filterSC={filtredSC}>
         {searchedTodos.map(todo => (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={() => completeTodo(todo.text)} delete={() => deleteTodo(todo.text)}/>
         ))}
       </TodoList>
+
+      <SwitchMode darkMode={darkMode}/>
     </>
   );
 }
