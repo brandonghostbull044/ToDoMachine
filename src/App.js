@@ -6,6 +6,7 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButtom } from './CreateTodoButtom';
 import { SwitchMode } from './switchMode';
 import React from 'react';
+import { DeleteButtoms } from './deleteButtoms';
 
 var defaultTodos = [
   
@@ -134,7 +135,6 @@ function App() {
   }
 
   const darkMode = () => {
-    console.log('hOLA');
     const bodyItem = document.querySelector('#root');
     const switch_Mode = document.querySelector('.switch_Mode');
     const create_button = document.querySelector('#create_button');
@@ -142,6 +142,7 @@ function App() {
     const slider_1 = document.querySelector('#slider_1');
     const slider_2 = document.querySelector('#slider_2');
     const slider_3 = document.querySelector('#slider_3');
+    const deleteButtomContainer = document.querySelector('.deleteButtomContainer');
     bodyItem.classList.toggle('darkBackground');
     create_button.classList.toggle('darkBackground');
     switch_Mode.classList.toggle('darkButtom');
@@ -149,6 +150,51 @@ function App() {
     slider_2.classList.toggle('darkBackground');
     slider_3.classList.toggle('darkBackground');
     todo_list_container.classList.toggle('darkShadow');
+    deleteButtomContainer.classList.toggle('darkShadow2');
+  }
+
+  const deleteButtom1 = () => {
+    const newtodos = todos.filter( todo => !todo.completed );
+    setTodos(newtodos);
+    switch (slider) {
+      case 2:
+        const new2Todos = newtodos.filter(todo => !todo.completed);
+        setSliderTodos(new2Todos);
+        console.log(new2Todos);
+        console.log('funciona el filtredsc');
+        break;
+      case 3:
+        const new3Todos = newtodos.filter(todo => todo.completed);
+        setSliderTodos(new3Todos);
+        console.log(new3Todos);
+        console.log('funciona el filtredsc');
+        break;
+      default:
+        setSliderTodos(newtodos);
+        break;
+    }
+  }
+
+  const deleteButtom2 = () => {
+    const newtodos = [];
+    setTodos(newtodos);
+    switch (slider) {
+      case 2:
+        const new2Todos = newtodos.filter(todo => !todo.completed);
+        setSliderTodos(new2Todos);
+        console.log(new2Todos);
+        console.log('funciona el filtredsc');
+        break;
+      case 3:
+        const new3Todos = newtodos.filter(todo => todo.completed);
+        setSliderTodos(new3Todos);
+        console.log(new3Todos);
+        console.log('funciona el filtredsc');
+        break;
+      default:
+        setSliderTodos(newtodos);
+        break;
+    }
   }
   
   return (
@@ -157,6 +203,7 @@ function App() {
       <CreateTodoButtom searchValue={createValue} setCreateValue={setCreateValue} addClick={addClick} counter={addClickState}/>
       
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+      <DeleteButtoms deleteButtom1={deleteButtom1} deleteButtom2={deleteButtom2}></DeleteButtoms>
       <TodoList filterT={filtredT} filterC={filtredC} filterSC={filtredSC}>
         {searchedTodos.map(todo => (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={() => completeTodo(todo.text)} delete={() => deleteTodo(todo.text)}/>
