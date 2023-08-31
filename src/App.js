@@ -101,12 +101,7 @@ function App() {
   };
 
   const addClick = () => {
-    const inputAdder = document.querySelector('#inputAdder');
-    
-    if (addClickState == 1) {
-      inputAdder.classList.remove('inactive');
-      setAddClickState(2);
-    } else {
+      setAddClickState(2)
       if (createValue != '') {
         if (!todos.some(e => e.text.toLocaleLowerCase() == createValue.toLocaleLowerCase())) {
           todos.push({text: createValue, completed: false});
@@ -129,9 +124,6 @@ function App() {
       } else {
         return;
       }
-    }
-    
-    
   }
 
   const darkMode = () => {
