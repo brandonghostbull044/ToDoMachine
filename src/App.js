@@ -13,9 +13,6 @@ var defaultTodos = [
 ];
 
 function App() {
-  const slider_1 = document.querySelector('#slider_1');
-  const slider_2 = document.querySelector('#slider_2');
-  const slider_3 = document.querySelector('#slider_3');
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
@@ -74,6 +71,9 @@ function App() {
   };
 
   const filtredT = (text) => {
+    const slider_1 = document.querySelector('#slider_1');
+    const slider_2 = document.querySelector('#slider_2');
+    const slider_3 = document.querySelector('#slider_3');
     slider_2.classList.remove('focus_slider');
     slider_3.classList.remove('focus_slider');
     slider_1.classList.add('focus_slider');
@@ -83,6 +83,9 @@ function App() {
   };
 
   const filtredSC = () => {
+    const slider_1 = document.querySelector('#slider_1');
+    const slider_2 = document.querySelector('#slider_2');
+    const slider_3 = document.querySelector('#slider_3');
     slider_3.classList.remove('focus_slider');
     slider_1.classList.remove('focus_slider');
     slider_2.classList.add('focus_slider');
@@ -92,6 +95,9 @@ function App() {
   };
 
   const filtredC = () => {
+    const slider_1 = document.querySelector('#slider_1');
+    const slider_2 = document.querySelector('#slider_2');
+    const slider_3 = document.querySelector('#slider_3');
     slider_2.classList.remove('focus_slider');
     slider_1.classList.remove('focus_slider');
     slider_3.classList.add('focus_slider');
