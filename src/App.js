@@ -8,12 +8,20 @@ import { SwitchMode } from './switchMode';
 import React from 'react';
 import { DeleteButtoms } from './deleteButtoms';
 
-var defaultTodos = [
-  
-];
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+  let parsedTodos;
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = {};
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [todos, setTodos] = React.useState(parsedTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
   const [sliderTodos, setSliderTodos] = React.useState(todos);
@@ -22,6 +30,12 @@ function App() {
   const completedTodosLength = todos.filter( todo => !!todo.completed ).length;
   const totalTodos = todos.length;
   const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
+
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
@@ -40,7 +54,7 @@ function App() {
         filtredC();
         break;
       default:
-        setTodos(newTodos); 
+        saveTodos(newTodos); 
     }
   };
 
@@ -50,7 +64,7 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
     switch (slider) {
       case 2:
         const new2Todos = newTodos.filter(todo => !todo.completed);
@@ -107,11 +121,12 @@ function App() {
   };
 
   const addClick = () => {
+      
       setAddClickState(2)
       if (createValue != '') {
         if (!todos.some(e => e.text.toLocaleLowerCase() == createValue.toLocaleLowerCase())) {
           todos.push({text: createValue, completed: false});
-          setTodos(todos);
+          saveTodos(todos);
         } else {
           alert('El ToDo ya está en tu lista');
         }
@@ -129,6 +144,13 @@ function App() {
         } 
       } else {
         return;
+      }
+      
+      const bodyItem = document.querySelector('#root');
+      if (bodyItem.classList.contains('darkBackground')) {
+        console.log('Sirve');
+        const create_button = document.querySelector('#create_button');
+        create_button.classList.add('darkBackground');
       }
   }
 
@@ -153,7 +175,7 @@ function App() {
 
   const deleteButtom1 = () => {
     const newtodos = todos.filter( todo => !todo.completed );
-    setTodos(newtodos);
+    saveTodos(newtodos);
     switch (slider) {
       case 2:
         const new2Todos = newtodos.filter(todo => !todo.completed);
@@ -175,7 +197,7 @@ function App() {
 
   const deleteButtom2 = () => {
     const newtodos = [];
-    setTodos(newtodos);
+    saveTodos(newtodos);
     switch (slider) {
       case 2:
         const new2Todos = newtodos.filter(todo => !todo.completed);
