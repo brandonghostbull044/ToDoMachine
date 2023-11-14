@@ -1,14 +1,11 @@
 :root {
     ---right_Color: #56317a;
+    ---container_Color: #726c77;
   }
   
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
 .Search_input {
+    color: white;
+    background-color: var(---container_Color);
     margin: auto;
     width: 35vw;
     height: 40px;
@@ -18,12 +15,16 @@
     border-radius: 50px;
     box-shadow: black 1px 2px 1px 2px;
   }
+
+.Search_input::placeholder {
+  color: white;
+}
   
-  #root .Search_input:active {
-    transform: translateY(10px) translateX(10px);
-  }
-  
-  #root .Search_input:focus {
-    border: var(---right_Color) 5px solid;
-    box-shadow: var(---right_Color) 1px 2px 1px 2px;
-  }
+.Search_input:active {
+  transform: translateY(10px) translateX(10px);
+}
+
+.Search_input:focus {
+  border: black 5px solid;
+  box-shadow: black 1px 2px 1px 2px;
+}

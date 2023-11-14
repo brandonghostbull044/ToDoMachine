@@ -2,12 +2,6 @@
   ---medium_Color: #3ab5b0;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .switch_Mode_Container {
     position: absolute;
     top: calc(100% - 70px);

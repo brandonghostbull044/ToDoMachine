@@ -3,12 +3,6 @@
   ---right_Color: #56317a;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .headerTitle p {
     font-size: 3rem;
     margin: 0 14px;

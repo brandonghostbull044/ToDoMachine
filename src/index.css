@@ -11,10 +11,6 @@
   box-sizing: border-box;
 }
 
-.inactive {
-  display: none;
-}
-
 body {
   height: 100vh;
   margin: 0;
@@ -23,7 +19,6 @@ body {
     sans-serif;
   background-image: var(---gradient_Background);
   color: var(---fontAndInputBg_Color);
-  
 }
 
 code {
@@ -47,7 +42,6 @@ code {
   font-size: 3rem;
   -webkit-text-stroke: black 3px;
   text-align: center;
-  background-color: var(---container_Color);
   border-radius: 50px;
   border: black 3px solid;
   box-shadow: black 4px 2px 4px 2px;
@@ -56,27 +50,9 @@ code {
   grid-area: header;
   }
 
-#root .deleteTodo {
-  display: none;
-}
-
 /* Dark Mode */
 
 .darkBackground {
   background-image: var(---dark_Background) !important;
   color: white !important;
-}
-
-.darkButtom {
-  margin-left: auto;
-  background-image: var(---dark_Background);
-}
-
-.darkShadow {
-  box-shadow: rgb(157, 157, 157) 13px 0.5px 11px -5.5px;
-}
-
-.darkShadow2 {
-  color: var(---fontAndInputBg_Color);
-  box-shadow: rgb(157, 157, 157) 8px 3.5px 11px 0px;
 }

@@ -7,33 +7,20 @@ import { CreateTodoButtom } from '../CreateTodoButtom';
 import { SwitchMode } from '../switchMode';
 import React from 'react';
 import { DeleteButtoms } from '../deleteButtoms';
-
-function useLocalStorage(itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName);
-
-  let parsedItem;
-
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
-
-  const [item, setItem] = React.useState(parsedItem);
-
-  const saveItem = (newItems) => {
-    localStorage.setItem(itemName, JSON.stringify(newItems));
-    setItem(newItems);
-  };
-
-  return [item, saveItem]
-}
-
+import { useLocalStorage } from './Custom Hooks';
 
 function App() {
-  
-
+  const bodyItem = document.querySelector('#root');
+  const switch_Mode = document.querySelector('.switch_Mode');
+  const create_button = document.querySelector('#create_button');
+  const todo_list_container = document.querySelector('.todo_list_container');
+  const slider_1 = document.querySelector('#slider_1');
+  const slider_2 = document.querySelector('#slider_2');
+  const slider_3 = document.querySelector('#slider_3');
+  const deleteButtomContainer = document.querySelector('.deleteButtomContainer');
+  const headerTittle = document.querySelector('.headerTitle');
+  const addContainer = document.querySelector('.add_Container');
+  const searchInput = document.querySelector('.Search_input')
   const [todos, saveTodos] = useLocalStorage('TODO_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
@@ -43,8 +30,6 @@ function App() {
   const completedTodosLength = todos.filter( todo => !!todo.completed ).length;
   const totalTodos = todos.length;
   const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
-
-  
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
@@ -95,9 +80,6 @@ function App() {
   };
 
   const filtredT = (text) => {
-    const slider_1 = document.querySelector('#slider_1');
-    const slider_2 = document.querySelector('#slider_2');
-    const slider_3 = document.querySelector('#slider_3');
     slider_2.classList.remove('focus_slider');
     slider_3.classList.remove('focus_slider');
     slider_1.classList.add('focus_slider');
@@ -107,9 +89,6 @@ function App() {
   };
 
   const filtredSC = () => {
-    const slider_1 = document.querySelector('#slider_1');
-    const slider_2 = document.querySelector('#slider_2');
-    const slider_3 = document.querySelector('#slider_3');
     slider_3.classList.remove('focus_slider');
     slider_1.classList.remove('focus_slider');
     slider_2.classList.add('focus_slider');
@@ -119,9 +98,6 @@ function App() {
   };
 
   const filtredC = () => {
-    const slider_1 = document.querySelector('#slider_1');
-    const slider_2 = document.querySelector('#slider_2');
-    const slider_3 = document.querySelector('#slider_3');
     slider_2.classList.remove('focus_slider');
     slider_1.classList.remove('focus_slider');
     slider_3.classList.add('focus_slider');
@@ -148,7 +124,7 @@ function App() {
           case 2:
             filtredSC();
             break;
-          case 3:
+          default:
             filtredC();
             break;
         } 
@@ -156,23 +132,13 @@ function App() {
         return;
       }
       
-      const bodyItem = document.querySelector('#root');
       if (bodyItem.classList.contains('darkBackground')) {
         console.log('Sirve');
-        const create_button = document.querySelector('#create_button');
         create_button.classList.add('darkBackground');
       }
   }
 
   const darkMode = () => {
-    const bodyItem = document.querySelector('#root');
-    const switch_Mode = document.querySelector('.switch_Mode');
-    const create_button = document.querySelector('#create_button');
-    const todo_list_container = document.querySelector('.todo_list_container');
-    const slider_1 = document.querySelector('#slider_1');
-    const slider_2 = document.querySelector('#slider_2');
-    const slider_3 = document.querySelector('#slider_3');
-    const deleteButtomContainer = document.querySelector('.deleteButtomContainer');
     bodyItem.classList.toggle('darkBackground');
     create_button.classList.toggle('darkBackground');
     switch_Mode.classList.toggle('darkButtom');
@@ -181,6 +147,9 @@ function App() {
     slider_3.classList.toggle('darkBackground');
     todo_list_container.classList.toggle('darkShadow');
     deleteButtomContainer.classList.toggle('darkShadow2');
+    headerTittle.classList.toggle('darkShadow2');
+    addContainer.classList.toggle('darkShadow2');
+    searchInput.classList.toggle('darkShadow2')
   }
 
   const deleteButtom1 = () => {

@@ -3,11 +3,6 @@
   ---right_Color: #56317a;
   ---fontAndInputBg_Color: white;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .add_Container {
     display: flex;
@@ -18,7 +13,7 @@
     margin-top: 85px;
     align-self: start;
     justify-self: center;
-    background-color: var(---container_Color);
+    border: 3px black solid;
     border-radius: 50px;
     box-shadow: black 10px 5px 10px 5px;
   }

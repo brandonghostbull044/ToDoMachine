@@ -1,14 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+:root {
+    ---check_Color: rgb(3, 195, 3);
+    ---delte_Color: red;
+    ---container_Color: #726c77;
+  }
 
 .focus_slider {
     transform: translateY(-5px);
   }
 
 .todo_list_container {
+  
   display: flex;
   flex-wrap: wrap;
   width: calc(100% - 60px);
@@ -22,7 +23,10 @@
 }
 
 .todo_list_container > p {
-  color: black;
+  text-align: center;
+  font-size: 27px;
+  -webkit-text-stroke: black 1px;
+  font-weight: bold;
   width: calc(100% / 3);
   height: 50px;
   padding: 10px;
@@ -59,7 +63,7 @@ ul {
 ul li {
   display: flex;
   flex-direction: row;
-  background-color: var(---stick_Background_Color);
+  background-color: var(---container_Color);
   color: black;
   width: max-content ;
   height: 50px;
@@ -72,6 +76,7 @@ ul li {
 }
 
 ul li span:last-child {
+  color: white;
   position: relative;
   font-weight: bold;
   font-size: 1.3rem;

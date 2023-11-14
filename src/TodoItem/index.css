@@ -2,12 +2,6 @@
   ---check_Color: rgb(3, 195, 3);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .todo_item {
     font-weight: bold;
     font-size: 1.5rem;

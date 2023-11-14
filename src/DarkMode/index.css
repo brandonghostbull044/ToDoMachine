@@ -9,15 +9,15 @@
   }
   
   .darkButtom {
-    margin-left: auto;
-    background-image: var(---dark_Background);
+    margin-left: auto !important;
+    background-image: var(---dark_Background) !important;
   }
   
   .darkShadow {
-    box-shadow: rgb(157, 157, 157) 13px 0.5px 11px -5.5px;
+    box-shadow: rgb(157, 157, 157) 13px 0.5px 11px -5.5px !important;
   }
   
   .darkShadow2 {
-    color: var(---fontAndInputBg_Color);
-    box-shadow: rgb(157, 157, 157) 8px 3.5px 11px 0px;
+    color: var(---fontAndInputBg_Color) !important;
+    box-shadow: rgb(157, 157, 157) 8px 3.5px 11px 0px !important;
   }
