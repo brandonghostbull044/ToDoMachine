@@ -1,3 +1,6 @@
+import './index.css'
+import '../DarkMode/index.css'
+
 function DeleteButtoms({deleteButtom1, deleteButtom2}) {
     return (
         <div className="deleteButtomContainer" >

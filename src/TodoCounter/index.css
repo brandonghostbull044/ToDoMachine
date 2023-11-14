@@ -1,0 +1,29 @@
+:root {
+  ---left_Color: #3ab5b0;
+  ---right_Color: #56317a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.headerTitle p {
+    font-size: 3rem;
+    margin: 0 14px;
+  }
+  
+  .headerTitle p:first-child {
+    color: var(---right_Color);
+  }
+  
+  .headerTitle p:last-child {
+    color: var(---left_Color);
+  }
+  
+  .headerTitle:hover {
+    transition: 2seg;
+    transform: rotateZ(3deg);
+  }
+  

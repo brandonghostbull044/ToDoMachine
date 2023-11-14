@@ -1,3 +1,6 @@
+import './index.css'
+import '../DarkMode/index.css'
+
 function CreateTodoButtom({createValue, setCreateValue, addClick, counter}) {
     if (counter == 1) {
         return (

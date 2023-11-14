@@ -1,3 +1,6 @@
+import './index.css'
+import '../DarkMode/index.css'
+
 function SwitchMode({darkMode}) {
     return (
         <div className="switch_Mode_Container" onClick={darkMode}>

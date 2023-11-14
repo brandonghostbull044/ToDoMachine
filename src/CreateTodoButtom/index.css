@@ -1,0 +1,72 @@
+:root {
+  ---gradient_Background: linear-gradient(to right, #3ab5b0 0%, #3ab5b0 31%, #56317a 100%);
+  ---right_Color: #56317a;
+  ---fontAndInputBg_Color: white;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.add_Container {
+    display: flex;
+    flex-direction: column;
+    grid-area: left;
+    width: auto;
+    height: auto;
+    margin-top: 85px;
+    align-self: start;
+    justify-self: center;
+    background-color: var(---container_Color);
+    border-radius: 50px;
+    box-shadow: black 10px 5px 10px 5px;
+  }
+  
+  .add_Container input {
+    width: 300px;
+    height: 40px;
+    margin: 25px auto;
+    padding: 5px;
+    margin: 25px;
+    border: black 3px solid;
+    border-radius: 50px;
+    box-shadow: black 1px 2px 1px 2px;
+  }
+  
+  .add_Container input:active {
+    transform: translateY(10px) translateX(10px);
+  }
+  
+  .add_Container input:focus {
+    border: var(---right_Color) 5px solid;
+    box-shadow: var(---right_Color) 1px 2px 1px 2px;
+  }
+  
+  .add_Container button {
+    color: var(---fontAndInputBg_Color);
+    background-image: var(---gradient_Background);
+    font-size: 5rem;
+    font-weight: bold;
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+    align-self: center;
+    border-radius: 100px;
+    box-shadow: black 1px 2px 1px 2px;
+  }
+  
+  .add_Container_buttom:hover {
+    transition: 0.1s;
+    font-size: 6rem;
+    cursor: pointer;
+    transform: rotateZ(360deg);
+  }
+  .add_Container_Buttom:hover {
+    transition: 0.1s;
+    font-size: 6rem;
+    cursor: pointer;
+    width: 180px;
+    height: 180px;
+    transform: rotateZ(360deg);
+  }

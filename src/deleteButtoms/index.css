@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.deleteButtomContainer {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 700px;
+    grid-area: right;
+    margin: 400px 0 0 178px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 10px 10px 10px 5px black ;
+  }
+  
+  .deleteButtom {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    border: 2px solid black;
+  }
+  
+  .deleteButtom p {
+    margin: auto;
+  }
+  
+  .deleteButtom:hover {
+    cursor: pointer;
+    transform: translateY(5px);
+    background-color: rgba(255, 0, 0, .3);
+  }
+  
+  #deleteButtom1 {
+    border-radius: 0 0 0 20px;
+  }
+  
+  #deleteButtom2 {
+    border-radius: 0 0 20px 0;
+  }

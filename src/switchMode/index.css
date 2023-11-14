@@ -1,0 +1,33 @@
+:root {
+  ---medium_Color: #3ab5b0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.switch_Mode_Container {
+    position: absolute;
+    top: calc(100% - 70px);
+    left: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: var(---container_Color);
+    border-radius: 50px;
+    border: 3px solid black;
+  }
+  
+  .switch_Mode {
+    position: relative;
+    height: 44px;
+    width: 50px;
+    background-color: black;
+    border-radius: 50px;
+    background-color: var(---medium_Color);
+  }
+  
+  .switch_Mode_Container:hover {
+    cursor: pointer;
+  }

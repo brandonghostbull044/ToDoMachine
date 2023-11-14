@@ -1,0 +1,23 @@
+:root {
+  ---fontAndInputBg_Color: white;
+  ---dark_Background: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+.darkBackground {
+    background-image: var(---dark_Background) !important;
+    color: white !important;
+  }
+  
+  .darkButtom {
+    margin-left: auto;
+    background-image: var(---dark_Background);
+  }
+  
+  .darkShadow {
+    box-shadow: rgb(157, 157, 157) 13px 0.5px 11px -5.5px;
+  }
+  
+  .darkShadow2 {
+    color: var(---fontAndInputBg_Color);
+    box-shadow: rgb(157, 157, 157) 8px 3.5px 11px 0px;
+  }

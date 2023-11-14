@@ -1,27 +1,40 @@
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import './App.css';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButtom } from './CreateTodoButtom';
-import { SwitchMode } from './switchMode';
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import './index.css';
+import { TodoItem } from '../TodoItem';
+import { CreateTodoButtom } from '../CreateTodoButtom';
+import { SwitchMode } from '../switchMode';
 import React from 'react';
-import { DeleteButtoms } from './deleteButtoms';
+import { DeleteButtoms } from '../deleteButtoms';
+
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItems) => {
+    localStorage.setItem(itemName, JSON.stringify(newItems));
+    setItem(newItems);
+  };
+
+  return [item, saveItem]
+}
 
 
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  
 
-  let parsedTodos;
-
-  if (!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = {};
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODO_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   const [slider, setSlider] = React.useState(1);
   const [sliderTodos, setSliderTodos] = React.useState(todos);
@@ -31,15 +44,12 @@ function App() {
   const totalTodos = todos.length;
   const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
 
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
+  
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     if (todos[todoIndex].completed) {
       newTodos[todoIndex].completed = false;
@@ -61,7 +71,7 @@ function App() {
   const deleteTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
@@ -123,8 +133,8 @@ function App() {
   const addClick = () => {
       
       setAddClickState(2)
-      if (createValue != '') {
-        if (!todos.some(e => e.text.toLocaleLowerCase() == createValue.toLocaleLowerCase())) {
+      if (createValue !== '') {
+        if (!todos.some(e => e.text.toLocaleLowerCase() === createValue.toLocaleLowerCase())) {
           todos.push({text: createValue, completed: false});
           saveTodos(todos);
         } else {

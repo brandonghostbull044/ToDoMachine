@@ -1,3 +1,5 @@
+import './index.css'
+
 function TodoCounter({total, completed}) {
   if (completed  == total && total > 0) {
     return (<h1 className="headerTitle">

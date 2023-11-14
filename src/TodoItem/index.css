@@ -1,0 +1,45 @@
+:root {
+  ---check_Color: rgb(3, 195, 3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.todo_item {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    margin-right: 10px;
+  }
+
+  .todo_item:active {
+    transition: 0s;
+    transform: translateY(4px) translateX(4px);
+  }
+
+  .completedToDos {
+    color: rgb(3, 195, 3);
+  }
+  
+  .completedToDos:hover {
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+    transform: translateX(4px) translateY(4px);
+  }
+  
+  
+  .completedToDosText {
+    text-decoration: line-through;
+  }
+
+  .unready_ToDo:hover {
+    cursor: pointer;
+    color: var(---check_Color);
+    transition: 0.2s;
+    transform: rotateZ(360deg);
+  }
