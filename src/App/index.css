@@ -1,3 +1,7 @@
+:root {
+  ---container_Color: #726c77;
+}
+
 .App {
   text-align: center;
 }
@@ -26,6 +30,20 @@
 
 .App-link {
   color: #97ca3f;
+}
+
+.avisos {
+  position: relative;
+  top: 40px;
+  font-size: 50px;
+  margin: auto;
+  font-weight: bold;
+  -webkit-text-stroke: black 3px;
+  background-color: var(---container_Color);
+  border-radius: 50px;
+  box-shadow: black 1px 2px 1px 2px;
+  border: 2px black solid;
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {

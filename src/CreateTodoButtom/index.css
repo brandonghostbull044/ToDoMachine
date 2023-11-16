@@ -2,6 +2,7 @@
   ---gradient_Background: linear-gradient(to right, #3ab5b0 0%, #3ab5b0 31%, #56317a 100%);
   ---right_Color: #56317a;
   ---fontAndInputBg_Color: white;
+  ---container_Color: #726c77;
 }
 
 .add_Container {
@@ -19,6 +20,7 @@
   }
   
   .add_Container input {
+    color: white;
     width: 300px;
     height: 40px;
     margin: 25px auto;
@@ -27,6 +29,10 @@
     border: black 3px solid;
     border-radius: 50px;
     box-shadow: black 1px 2px 1px 2px;
+    background-color: var(---container_Color);
+  }
+  .add_Container input::placeholder {
+    color: white;
   }
   
   .add_Container input:active {
@@ -34,7 +40,7 @@
   }
   
   .add_Container input:focus {
-    border: var(---right_Color) 5px solid;
+    border: black 5px solid;
     box-shadow: var(---right_Color) 1px 2px 1px 2px;
   }
   
