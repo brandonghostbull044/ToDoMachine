@@ -16,6 +16,11 @@ function RenderUI({todos, totalTodos, createValue, setCreateValue, addClick, sea
             <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
             <DeleteButtoms deleteButtom1={deleteButtom1} deleteButtom2={deleteButtom2}></DeleteButtoms>
             <TodoList filterT={filtredT} filterC={filtredC} filterSC={filtredSC}>
+                {loading && <div class="wrapper">
+                                <div class="space">
+                                    <div class="loading"></div>
+                                </div>
+                            </div>}
                 {searchedTodos.map(todo => (
                     <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={() => completeTodo(todo.text)} delete={() => deleteTodo(todo.text)}/>
                 ))}

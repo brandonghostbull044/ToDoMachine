@@ -7,7 +7,7 @@ function TodoCounter({total, completed, loading, error}) {
     </h1>);
   } else if (error) {
     return (<h1 className="headerTitle">
-      Loading...
+      !Hubo un error¡. Intenta recargar.
     </h1>);
   }else {
     if (completed  === total && total > 0) {
