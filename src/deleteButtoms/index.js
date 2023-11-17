@@ -1,7 +1,10 @@
 import './index.css'
 import '../DarkMode/index.css'
+import React from 'react';
+import { TodoContext } from '../TodoContext';
 
-function DeleteButtoms({deleteButtom1, deleteButtom2}) {
+function DeleteButtoms() {
+    const {deleteButtom1, deleteButtom2} = React.useContext(TodoContext);
     return (
         <div className="deleteButtomContainer" >
             <div value='deltodos' className="deleteButtom" id="deleteButtom1" onClick={deleteButtom1}><p>Eliminar completados</p></div>

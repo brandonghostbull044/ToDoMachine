@@ -1,8 +1,12 @@
 import './index.css'
 import '../DarkMode/index.css'
+import React from 'react';
+import { TodoContext } from '../TodoContext';
 
-function CreateTodoButtom({createValue, setCreateValue, addClick, counter}) {
-    if (counter === 1) {
+function CreateTodoButtom() {
+    const {createValue, setCreateValue, addClick, addClickState} = React.useContext(TodoContext);
+
+    if (addClickState === 1) {
         return (
         <div className="add_Container">
             <button className="create_button add_Container_Buttom" onClick={addClick}>+</button>
