@@ -3,10 +3,8 @@
 }
 
 .switch_Mode_Container {
-    position: absolute;
-    top: calc(100% - 70px);
-    left: 20px;
     height: 50px;
+    margin: auto;
     width: 100px;
     background-color: var(---container_Color);
     border-radius: 50px;
@@ -24,4 +22,17 @@
   
   .switch_Mode_Container:hover {
     cursor: pointer;
+  }
+
+  .darkModeContainer {
+    display: grid;
+    color: black;
+    font-weight: bold;
+    place-content: center;
+    background-color: rgba(114, 108, 119, 0.5);
+    width: fit-content;
+    margin: auto;
+    padding: 15px;
+    border-radius: 25px;
+    margin-top: 15px;
   }

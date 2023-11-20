@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocalStorage } from "./Custom Hooks";
+import { useChangeOrder } from "./Custom Hooks";
 
 const TodoContext = React.createContext();
 
 function TodoProvider({children}) {
     const bodyItem = document.querySelector('#root');
-    const switch_Mode = document.querySelector('.switch_Mode');
     const create_button = document.querySelector('.create_button');
     const todo_list_container = document.querySelector('.todo_list_container');
     const slider_1 = document.querySelector('#slider_1');
@@ -24,6 +24,8 @@ function TodoProvider({children}) {
     const totalTodos = todos.length;
     const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
     const completedTodosLenght = todos.filter(todo => todo.completed).length;
+    const [openModal, setOpenModal] = React.useState(false);
+    const [order, setOrder] = React.useState(0);
     
   
     const completeTodo = (text) => {
@@ -127,6 +129,7 @@ function TodoProvider({children}) {
     }
   
     const darkMode = () => {
+      const switch_Mode = document.querySelector('.switch_Mode');
       bodyItem.classList.toggle('darkBackground');
       create_button.classList.toggle('darkBackground');
       switch_Mode.classList.toggle('darkButtom');
@@ -175,13 +178,21 @@ function TodoProvider({children}) {
           break;
       }
     }
+
+    const changeSettings = () => {
+      const order = document.querySelector('#orderButtom');
+      const value = order.options[order.selectedIndex].value;
+      setOrder(value);
+    }
+
+
     React.useEffect(() => {
       if (todos.length > 0) {
         setSliderTodos(todos);
       }
     }, [todos]);
     return (
-        <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, darkMode, completedTodosLenght}}>
+        <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, darkMode, completedTodosLenght, openModal, setOpenModal, changeSettings}}>
             {children}
         </TodoContext.Provider>
     );

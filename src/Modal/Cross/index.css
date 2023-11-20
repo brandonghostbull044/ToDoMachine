@@ -1,0 +1,14 @@
+.exitCross {
+    position: relative;
+    top: 5px;
+    left: 250px;
+    width: fit-content;
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.exitCross:hover {
+    cursor: pointer;
+    color: red;
+}

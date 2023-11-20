@@ -1,0 +1,18 @@
+.orderContariner {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(114, 108, 119, 0.5);
+    color:  black;
+    font-weight: bold;
+    width: fit-content;
+    margin: 15px auto;
+    text-align: center;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.orderContariner select {
+    border: none;
+    background-color: rgba(114, 108, 119, 0.4);
+    border-radius: 20px;
+}

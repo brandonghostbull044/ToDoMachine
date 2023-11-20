@@ -1,0 +1,98 @@
+:root {
+    ---container_Color: #726c77;
+  }
+
+.settingsIcon {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px black solid;
+    z-index: 2;
+    box-shadow: black 2.5px 1.25px 2.5px 1.25px;
+}
+
+.settingsIcon:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    transform: rotateZ(90deg);
+}
+
+.settingsIcon div {
+    background-color: var(---container_Color);
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 4px black solid;
+    z-index: 1;
+    box-shadow: black 2.5px 1.25px 2.5px 1.25px;
+}
+
+.settingsIcon div:hover {
+    cursor: pointer;
+}
+
+.settingsIcon div:first-child {
+    left: calc(50% - 10px);
+    top: -20px;
+}
+
+.settingsIcon div:nth-child(2) {
+    left: calc(50% - 10px);
+    bottom: -20px;
+}
+
+.settingsIcon div:nth-child(3) {
+    left: 100%;
+    bottom: calc(50% - 10px);
+}
+
+.settingsIcon div:nth-child(4) {
+    left: -20px;
+    bottom: calc(50% - 10px);
+}
+
+.settingsIcon div:nth-child(5) {
+    rotate: 45deg;
+    top: -6.5px;
+    left: -6.5px;
+}
+
+.settingsIcon div:nth-child(6) {
+    rotate: 45deg;
+    top: -6.5px;
+    right: -6.5px;
+}
+
+.settingsIcon div:nth-child(7) {
+    rotate: 45deg;
+    bottom: -6.5px;
+    left: -6.5px;
+}
+
+.settingsIcon div:nth-child(8) {
+    rotate: 45deg;
+    bottom: -6.5px;
+    right: -6.5px;
+}
+
+.settingsIcon div:nth-child(9) {
+    background-color: var(---container_Color);
+    top: -4px;
+    left: -4px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.settingsIcon div:last-child {
+    top: calc(50% - 19.5px);
+    left: calc(50% - 19.5px);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: none;
+}

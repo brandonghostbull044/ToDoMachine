@@ -31,4 +31,8 @@ function useLocalStorage(itemName, initialValue) {
     return {item, saveItem, loading, error};
   }
 
-  export { useLocalStorage }
+  function useChangeOrder(sliderTodos, order) {
+    return (true);
+  }
+
+  export { useLocalStorage, useChangeOrder };
