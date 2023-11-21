@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocalStorage } from "./Custom Hooks";
 import { useChangeOrder } from "./Custom Hooks";
+import { useSettings } from "./Custom Hooks";
 
 const TodoContext = React.createContext();
 
@@ -14,19 +15,21 @@ function TodoProvider({children}) {
     const deleteButtomContainer = document.querySelector('.deleteButtomContainer');
     const headerTittle = document.querySelector('.headerTitle');
     const addContainer = document.querySelector('.add_Container');
-    const searchInput = document.querySelector('.Search_input')
+    const searchInput = document.querySelector('.Search_input');
     const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODO_V1', []);
     const [searchValue, setSearchValue] = React.useState('');
     const [slider, setSlider] = React.useState(1);
+    const [order, setOrder] = React.useState('za');
     const [sliderTodos, setSliderTodos] = React.useState(todos);
     const [createValue, setCreateValue] = React.useState('');
     const [addClickState, setAddClickState] = React.useState(1);
     const totalTodos = todos.length;
-    const searchedTodos = sliderTodos.filter(todo => todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+    const searchedTodos = useChangeOrder(sliderTodos, order, searchValue);
     const completedTodosLenght = todos.filter(todo => todo.completed).length;
     const [openModal, setOpenModal] = React.useState(false);
-    const [order, setOrder] = React.useState(0);
-    
+    const [appLanguaje, setAppLanguaje] = React.useState('es');
+    const [dark, setDark] = React.useState(false);
+    const {userSettings, saveSettings} = useSettings('Brandon', order, appLanguaje, dark);
   
     const completeTodo = (text) => {
       const newTodos = [...todos];
@@ -128,19 +131,36 @@ function TodoProvider({children}) {
           }
     }
   
-    const darkMode = () => {
+    const darkModeOn = () => {
+      bodyItem.classList.add('darkBackground');
+      create_button.classList.add('darkBackground');
+      slider_1.classList.add('darkBackground');
+      slider_2.classList.add('darkBackground');
+      slider_3.classList.add('darkBackground');
+      todo_list_container.classList.add('darkShadow');
+      deleteButtomContainer.classList.add('darkShadow2');
+      headerTittle.classList.add('darkShadow2');
+      addContainer.classList.add('darkShadow2');
+      searchInput.classList.add('darkShadow2')
+    }
+
+    const darkModeOff = () => {
+      bodyItem.classList.remove('darkBackground');
+      create_button.classList.remove('darkBackground');
+      slider_1.classList.remove('darkBackground');
+      slider_2.classList.remove('darkBackground');
+      slider_3.classList.remove('darkBackground');
+      todo_list_container.classList.remove('darkShadow');
+      deleteButtomContainer.classList.remove('darkShadow2');
+      headerTittle.classList.remove('darkShadow2');
+      addContainer.classList.remove('darkShadow2');
+      searchInput.classList.remove('darkShadow2')
+    }
+
+    const darkModeSwitch = () => {
       const switch_Mode = document.querySelector('.switch_Mode');
-      bodyItem.classList.toggle('darkBackground');
-      create_button.classList.toggle('darkBackground');
       switch_Mode.classList.toggle('darkButtom');
-      slider_1.classList.toggle('darkBackground');
-      slider_2.classList.toggle('darkBackground');
-      slider_3.classList.toggle('darkBackground');
-      todo_list_container.classList.toggle('darkShadow');
-      deleteButtomContainer.classList.toggle('darkShadow2');
-      headerTittle.classList.toggle('darkShadow2');
-      addContainer.classList.toggle('darkShadow2');
-      searchInput.classList.toggle('darkShadow2')
+      setDark(!dark);
     }
   
     const deleteButtom1 = () => {
@@ -180,19 +200,33 @@ function TodoProvider({children}) {
     }
 
     const changeSettings = () => {
-      const order = document.querySelector('#orderButtom');
-      const value = order.options[order.selectedIndex].value;
-      setOrder(value);
+      const orderButtom = document.getElementById('orderButtom');
+      const languaje = document.getElementById('languageButtom');
+      setOrder(orderButtom.options[orderButtom.selectedIndex].value);
+      setAppLanguaje(languaje.options[languaje.selectedIndex].value);
+      setOpenModal(false);
+      saveSettings(order, appLanguaje, dark);
+      if (dark) {
+        darkModeOn();
+      } else {
+        darkModeOff();
+      }
     }
-
 
     React.useEffect(() => {
       if (todos.length > 0) {
         setSliderTodos(todos);
       }
     }, [todos]);
+
+    React.useEffect(() => {
+      setOrder(userSettings[0]);
+      setAppLanguaje(userSettings[1]);
+      setDark(userSettings[2]);
+    }, [order]);
+
     return (
-        <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, darkMode, completedTodosLenght, openModal, setOpenModal, changeSettings}}>
+        <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, completedTodosLenght, openModal, setOpenModal, changeSettings, darkModeSwitch, order, appLanguaje, dark}}>
             {children}
         </TodoContext.Provider>
     );

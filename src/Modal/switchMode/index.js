@@ -4,17 +4,15 @@ import React from 'react';
 import { TodoContext  } from '../../TodoContext';
 
 function SwitchMode() {
-    const {darkMode} = React.useContext(TodoContext);
+    const {darkModeSwitch, dark} = React.useContext(TodoContext);
     return (
         <div className='darkModeContainer'>
             <label htmlFor="orderButtom">Dark/Light Mode</label>
-            <div className="switch_Mode_Container" onClick={darkMode}>
+            <div className={"switch_Mode_Container " + (dark && 'darkButtom')} onClick={darkModeSwitch}>
                 <div className="switch_Mode" ></div>
             </div>
         </div>
         )
-        
-        
 }
 
 export { SwitchMode };

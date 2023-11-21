@@ -2,9 +2,9 @@ import '../index.css'
 
 function Container({children}) {
     return (
-        <form className="SettingsContainer">
+        <div className="SettingsContainer">
             {children}
-        </form>
+        </div>
     );
 };
 
