@@ -26,4 +26,4 @@ https://brandonghostbull044.github.io/ToDoMachine/
 
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1wosDCKn3DhpqjG56raQ3afW7GcCILl6l/view?usp=drive_link)
+![App Screenshot]([https://drive.google.com/file/d/1wosDCKn3DhpqjG56raQ3afW7GcCILl6l/view?usp=drive_link](https://drive.google.com/file/d/1wosDCKn3DhpqjG56raQ3afW7GcCILl6l/view?usp=sharing)https://drive.google.com/file/d/1wosDCKn3DhpqjG56raQ3afW7GcCILl6l/view?usp=sharing)
