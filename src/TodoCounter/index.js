@@ -3,7 +3,7 @@ import './index.css'
 import React from 'react';
 
 function TodoCounter() {
-const {totalTodos, completedTodosLenght, loading, error, dark} = React.useContext(TodoContext);
+const {totalTodos, completedTodosLenght, loading, error, dark, appLanguaje} = React.useContext(TodoContext);
 
   if (loading) {
     return (<h1 className={"headerTitle " + (dark && 'darkShadow2')}>
@@ -24,7 +24,7 @@ const {totalTodos, completedTodosLenght, loading, error, dark} = React.useContex
       </h1>);
     } else {
       return (<h1 className={"headerTitle " + (dark && 'darkShadow2')}>
-        Has completado <p className="headerTitle">{completedTodosLenght}</p> de <p className="headerTitle">{totalTodos}</p> ToDo's
+        {appLanguaje == 'es' && 'Has completado' || appLanguaje == 'en' && 'You have completed'} <p className="headerTitle">{completedTodosLenght}</p> {appLanguaje == 'es' && 'de' || appLanguaje == 'en' && 'of'} <p className="headerTitle">{totalTodos}</p> ToDo's
       </h1>);
   }
   }

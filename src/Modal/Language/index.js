@@ -6,7 +6,7 @@ function Language() {
     const {appLanguaje} = React.useContext(TodoContext);
     return (
         <div className='languageContariner'>
-            <label htmlFor="languageButtom">Language</label>
+            <label htmlFor="languageButtom">{appLanguaje == 'es' && 'Idioma' || appLanguaje == 'en' && 'Languaje'}</label>
             <select name="Languaje" id="languageButtom">
                 <option value="es" selected={appLanguaje === 'es' && true} >Español</option>
                 <option value="en" selected={appLanguaje === 'en' && true} >English</option>

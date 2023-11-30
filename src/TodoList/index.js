@@ -4,12 +4,15 @@ import { TodoContext } from "../TodoContext";
 import { TodoItem } from "../TodoItem";
 
 function TodoList() {
-    const {filtredT, filtredSC, filtredC, loading, searchedTodos, deleteTodo, completeTodo, dark} = React.useContext(TodoContext);
+    const {filtredT, filtredSC, filtredC, loading, searchedTodos, deleteTodo, completeTodo, dark, appLanguaje} = React.useContext(TodoContext);
     return (
         <div className={"todo_list_container " + (dark && 'darkShadow')}>
-            <p onClick={filtredT} id="slider_1" className={"focus_slider slider " + (dark && 'darkBackground')}>Todos</p>
-            <p onClick={filtredSC} id="slider_2" className={dark && 'darkBackground'}>Sin completar</p>
-            <p onClick={filtredC} id="slider_3" className={dark && 'darkBackground'}>Completados</p>
+            {appLanguaje == 'es' && <p onClick={filtredT} id="slider_1" className={"focus_slider slider " + (dark && 'darkBackground')}>Todos</p>}
+            {appLanguaje == 'en' && <p onClick={filtredT} id="slider_1" className={"focus_slider slider " + (dark && 'darkBackground')}>All</p>}
+            {appLanguaje == 'es' && <p onClick={filtredSC} id="slider_2" className={dark && 'darkBackground'}>Sin completar</p>}
+            {appLanguaje == 'en' && <p onClick={filtredSC} id="slider_2" className={dark && 'darkBackground'}>Not completed</p>}
+            {appLanguaje == 'es' && <p onClick={filtredC} id="slider_3" className={dark && 'darkBackground'}>Completados</p>}
+            {appLanguaje == 'en' && <p onClick={filtredC} id="slider_3" className={dark && 'darkBackground'}>Completed</p>}
             <ul>
                 {loading && <div className="wrapper">
                                     <div className="space">
@@ -21,7 +24,6 @@ function TodoList() {
                     ))}
             </ul>
         </div>
-        
     );
 }
 
