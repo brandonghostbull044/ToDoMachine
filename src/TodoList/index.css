@@ -133,3 +133,15 @@ ul li span:last-child:hover {
   height: 100%;
   animation: loading 5s steps(40) infinite;
 }
+
+ul::-webkit-scrollbar{
+  width: 10px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: var(---container_Color);
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+  background-color: #3a363d;
+}

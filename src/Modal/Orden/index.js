@@ -12,7 +12,8 @@ function Orden() {
                 <option value="za" selected={order === 'za' && true} >Alfabético invertido (Z-A)</option>
                 <option value="ncp" selected={order === 'ncp' && true} >No completados primero</option>
                 <option value="cp" selected={order === 'cp' && true} >Completados primero</option>
-                <option value="pfa" selected={order === 'pfa' && true} >Por fecha de agregado</option>
+                <option value="pfaa" selected={order === 'pfaa' && true} >Fecha de agregado (AS)</option>
+                <option value="pfad" selected={order === 'pfad' && true} >Fecha de agregado (DES)</option>
             </select>
         </div>
     );

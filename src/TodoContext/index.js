@@ -7,15 +7,9 @@ const TodoContext = React.createContext();
 
 function TodoProvider({children}) {
     const bodyItem = document.querySelector('#root');
-    const create_button = document.querySelector('.create_button');
-    const todo_list_container = document.querySelector('.todo_list_container');
     const slider_1 = document.querySelector('#slider_1');
     const slider_2 = document.querySelector('#slider_2');
     const slider_3 = document.querySelector('#slider_3');
-    const deleteButtomContainer = document.querySelector('.deleteButtomContainer');
-    const headerTittle = document.querySelector('.headerTitle');
-    const addContainer = document.querySelector('.add_Container');
-    const searchInput = document.querySelector('.Search_input');
     const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODO_V1', []);
     const [searchValue, setSearchValue] = React.useState('');
     const [slider, setSlider] = React.useState(1);
@@ -130,32 +124,6 @@ function TodoProvider({children}) {
             create_button.classList.add('darkBackground');
           }
     }
-  
-    const darkModeOn = () => {
-      bodyItem.classList.add('darkBackground');
-      create_button.classList.add('darkBackground');
-      slider_1.classList.add('darkBackground');
-      slider_2.classList.add('darkBackground');
-      slider_3.classList.add('darkBackground');
-      todo_list_container.classList.add('darkShadow');
-      deleteButtomContainer.classList.add('darkShadow2');
-      headerTittle.classList.add('darkShadow2');
-      addContainer.classList.add('darkShadow2');
-      searchInput.classList.add('darkShadow2')
-    }
-
-    const darkModeOff = () => {
-      bodyItem.classList.remove('darkBackground');
-      create_button.classList.remove('darkBackground');
-      slider_1.classList.remove('darkBackground');
-      slider_2.classList.remove('darkBackground');
-      slider_3.classList.remove('darkBackground');
-      todo_list_container.classList.remove('darkShadow');
-      deleteButtomContainer.classList.remove('darkShadow2');
-      headerTittle.classList.remove('darkShadow2');
-      addContainer.classList.remove('darkShadow2');
-      searchInput.classList.remove('darkShadow2')
-    }
 
     const darkModeSwitch = () => {
       const switch_Mode = document.querySelector('.switch_Mode');
@@ -204,11 +172,6 @@ function TodoProvider({children}) {
       const languaje = document.getElementById('languageButtom');
       setOrder(orderButtom.options[orderButtom.selectedIndex].value);
       setAppLanguaje(languaje.options[languaje.selectedIndex].value);
-      if (dark) {
-        darkModeOn();
-      } else {
-        darkModeOff();
-      }
       setOpenModal(false);
       saveSettings(orderButtom.options[orderButtom.selectedIndex].value, languaje.options[languaje.selectedIndex].value, dark);
     }
@@ -223,6 +186,11 @@ function TodoProvider({children}) {
       setOrder(userSettings[0]);
       setAppLanguaje(userSettings[1]);
       setDark(userSettings[2]);
+      if (userSettings[2]) {
+        bodyItem.classList.add('darkBackground');
+      } else {
+        bodyItem.classList.remove('darkBackground');
+      }
     }, [userSettings]);
 
     return (

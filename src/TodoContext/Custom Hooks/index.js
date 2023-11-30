@@ -48,9 +48,11 @@ function useLocalStorage(itemName, initialValue) {
         case 'ncp':
           setNewOrder(searchedTodos.sort((a, b) => a.completed - b.completed));
           break
-        default:
+        case 'pfaa':
           setNewOrder(searchedTodos);
           break
+        default:
+          setNewOrder(searchedTodos.reverse());
       }
     }, [sliderTodos, searchValue, order]);
 
