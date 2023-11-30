@@ -5,7 +5,7 @@ import { TodoContext } from '../../TodoContext';
 function SubmitButtom() {
     const {changeSettings} = React.useContext(TodoContext);
     return (
-        <button onClick={() => changeSettings()}>Guardar</button>
+        <button className='submittButtom' onClick={() => changeSettings()}>Guardar</button>
     );
 };
 
