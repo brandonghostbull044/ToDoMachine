@@ -194,7 +194,7 @@ function TodoProvider({children}) {
     }, [userSettings]);
 
     return (
-        <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, completedTodosLenght, openModal, setOpenModal, changeSettings, darkModeSwitch, order, appLanguaje, dark}}>
+        <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, completedTodosLenght, openModal, setOpenModal, changeSettings, darkModeSwitch, order, appLanguaje, dark, slider}}>
             {children}
         </TodoContext.Provider>
     );
