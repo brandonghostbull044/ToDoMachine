@@ -204,13 +204,13 @@ function TodoProvider({children}) {
       const languaje = document.getElementById('languageButtom');
       setOrder(orderButtom.options[orderButtom.selectedIndex].value);
       setAppLanguaje(languaje.options[languaje.selectedIndex].value);
-      setOpenModal(false);
-      saveSettings(order, appLanguaje, dark);
       if (dark) {
         darkModeOn();
       } else {
         darkModeOff();
       }
+      setOpenModal(false);
+      saveSettings(orderButtom.options[orderButtom.selectedIndex].value, languaje.options[languaje.selectedIndex].value, dark);
     }
 
     React.useEffect(() => {
@@ -223,7 +223,7 @@ function TodoProvider({children}) {
       setOrder(userSettings[0]);
       setAppLanguaje(userSettings[1]);
       setDark(userSettings[2]);
-    }, [order]);
+    }, [userSettings]);
 
     return (
         <TodoContext.Provider value={{todos, totalTodos, loading, error, createValue, setCreateValue, addClick, addClickState, searchValue, setSearchValue, deleteButtom1, deleteButtom2, filtredT, filtredSC, filtredC, loading, searchedTodos, completeTodo, deleteTodo, completedTodosLenght, openModal, setOpenModal, changeSettings, darkModeSwitch, order, appLanguaje, dark}}>

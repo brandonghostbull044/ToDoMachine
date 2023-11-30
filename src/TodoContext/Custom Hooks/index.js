@@ -76,7 +76,7 @@ function useLocalStorage(itemName, initialValue) {
     }, []);
     const saveSettings = (order, appLanguaje, dark) => {
       localStorage.setItem(userName, JSON.stringify([order, appLanguaje, dark]));
-      setUserSettings(order, appLanguaje, dark);
+      setUserSettings([order, appLanguaje, dark]);
     };
 
     return {userSettings, saveSettings};

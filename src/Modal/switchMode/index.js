@@ -9,7 +9,7 @@ function SwitchMode() {
         <div className='darkModeContainer'>
             <label htmlFor="orderButtom">Dark/Light Mode</label>
             <div className={"switch_Mode_Container " + (dark && 'darkButtom')} onClick={darkModeSwitch}>
-                <div className="switch_Mode" ></div>
+                <div className={"switch_Mode " + (dark && 'darkButtom')} ></div>
             </div>
         </div>
         )
